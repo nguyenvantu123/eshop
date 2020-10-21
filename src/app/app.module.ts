@@ -15,20 +15,20 @@ import { CampaignsDetailComponent } from './campaigns/campaigns-detail/campaigns
 
 @NgModule({
   declarations: [
-    AppComponent,
-    UppercasePipe,
-    BasketStatusComponent,
-    OrdersNewComponent,
-    OrdersDetailComponent,
-    CampaignsDetailComponent
+    AppComponent
   ],
   imports: [
+    // BrowserAnimationsModule,
     BrowserModule,
-    AppRoutingModule,
-    CatalogComponent,
-    BasketComponent,
-    CampaignsComponent,
-    SharedModule
+    // ToastrModule.forRoot(),
+    // routing,
+    // HttpClientModule,
+    // Only module that app module loads
+    SharedModule.forRoot(),
+    // CatalogModule,
+    // OrdersModule,
+    // BasketModule,
+    // CampaignsModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

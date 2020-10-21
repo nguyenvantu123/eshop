@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './campaigns.component.html',
   styleUrls: ['./campaigns.component.scss']
 })
+
 export class CampaignsComponent implements OnInit {
 
   constructor() { }

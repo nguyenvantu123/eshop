@@ -6,16 +6,25 @@ import { RouterModule } from '@angular/router';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BasketStatusComponent } from './basket/basket-status/basket-status.component';
+import { PagerComponent } from './components/pager/pager';
+import { Identity } from './components/identity/identity';
+import { HeaderComponent } from './components/header/header';
+import { DataService } from './services/data.service';
+import { BasketWrapperService } from './services/basket.wrapper.service';
+import { SecurityService } from './services/security.service';
+import { ConfigurationService } from './services/configuration.service';
+import { StorageService } from './services/storage.service';
+import { SignalrService } from './services/signalr.service';
+import { ModuleWithProviders } from '@angular/compiler/src/core';
 
 @NgModule({
   declarations: [
-    Pager,
-    Header,
+    PagerComponent,
+    HeaderComponent,
     Identity,
     PageNotFoundComponent,
     UppercasePipe,
-    BasketStatusComponent],
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -24,21 +33,35 @@ import { BasketStatusComponent } from './basket/basket-status/basket-status.comp
     NgbModule,
     // No need to export as these modules don't expose any components/directive etc'
     HttpClientModule,
-    HttpClientJsonpModule
+    HttpClientJsonpModule,
   ],
-  exports:[
+  exports: [
     // Modules
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
     NgbModule,
-    // Providers, Components, directive, pipes
-    Pager,
-    Header,
+    PagerComponent,
+    HeaderComponent,
     Identity,
     PageNotFoundComponent,
-    UppercasePipe
-  ]
+    UppercasePipe,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: [
+        // Providers
+        DataService,
+        BasketWrapperService,
+        SecurityService,
+        ConfigurationService,
+        StorageService,
+        SignalrService,
+      ],
+    };
+  }
+}
