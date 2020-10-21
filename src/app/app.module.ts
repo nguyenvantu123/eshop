@@ -1,34 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CatalogComponent } from './catalog/catalog.component';
-import { BasketComponent } from './basket/basket.component';
-import { CampaignsComponent } from './campaigns/campaigns.component';
 import { AppService } from './app.service';
 import { SharedModule } from './shared/shared.module';
-import { UppercasePipe } from './pipes/uppercase.pipe';
-import { BasketStatusComponent } from './basket/basket-status/basket-status.component';
-import { OrdersNewComponent } from './orders/orders-new/orders-new.component';
-import { OrdersDetailComponent } from './orders/orders-detail/orders-detail.component';
-import { CampaignsDetailComponent } from './campaigns/campaigns-detail/campaigns-detail.component';
+import { ToastrModule } from 'ngx-toastr';
+import { routing } from './app.route';
+import { HttpClientModule } from '@angular/common/http';
+import { BasketModule } from './basket/basket.module';
+import { CampaignsModule } from './campaigns/campaigns.module';
+import { CatalogModule } from './catalog/catalog.module';
+import { OrdersModule } from './orders/orders.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    UppercasePipe,
-    BasketStatusComponent,
-    OrdersNewComponent,
-    OrdersDetailComponent,
-    CampaignsDetailComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    CatalogComponent,
-    BasketComponent,
-    CampaignsComponent,
-    SharedModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    SharedModule.forRoot(),
+    routing,
+    HttpClientModule,
+    BasketModule,
+    CampaignsModule,
+    CatalogModule,
+    OrdersModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

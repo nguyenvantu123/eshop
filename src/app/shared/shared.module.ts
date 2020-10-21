@@ -6,7 +6,9 @@ import { RouterModule } from '@angular/router';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BasketStatusComponent } from './basket/basket-status/basket-status.component';
+import { Identity } from './components/identity/identity';
+import { Header } from './components/header/header';
+import { Pager } from './components/pager/pager';
 
 @NgModule({
   declarations: [
@@ -14,8 +16,7 @@ import { BasketStatusComponent } from './basket/basket-status/basket-status.comp
     Header,
     Identity,
     PageNotFoundComponent,
-    UppercasePipe,
-    BasketStatusComponent],
+    UppercasePipe],
   imports: [
     CommonModule,
     FormsModule,
@@ -41,4 +42,8 @@ import { BasketStatusComponent } from './basket/basket-status/basket-status.comp
     UppercasePipe
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+  static forRoot(): any[] | import("@angular/core").Type<any> | import("@angular/core").ModuleWithProviders<{}> {
+    throw new Error('Method not implemented.');
+  }
+}
