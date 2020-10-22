@@ -39,5 +39,5 @@ export class AppComponent implements OnInit {
   // tslint:disable-next-line: typedef
   public setTitle(newTitle: string) {
     this.titleService.setTitle('eShopOnContainers');
-}
+  }
 }

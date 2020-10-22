@@ -4,7 +4,7 @@ import { SecurityService } from '../../services/security.service';
 import { SignalrService } from '../../services/signalr.service';
 
 @Component({
-    selector: 'esh-identity',
+    selector: 'app-identity',
     templateUrl: './identity.html',
     styleUrls: ['./identity.scss']
 })

@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { SharedModule } from '../shared/shared.module';
+import { CampaignsDetailComponent } from './campaigns-detail/campaigns-detail.component';
+import { CampaignsComponent } from './campaigns.component';
+import { CampaignsService } from './campaigns.service';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [CampaignsComponent, CampaignsDetailComponent],
   imports: [
-    CommonModule
+    BrowserModule,
+    SharedModule
+  ],
+  providers: [
+    CampaignsService
   ]
 })
 export class CampaignsModule { }
