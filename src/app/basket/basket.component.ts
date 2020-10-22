@@ -9,51 +9,61 @@ import { BasketService } from './basket.service';
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html',
-  styleUrls: ['./basket.component.scss']
+  styleUrls: ['./basket.component.scss'],
 })
 export class BasketComponent implements OnInit {
-
   errorMessages: any;
   basket: IBasket;
-  totalPrice: number = 0;
+  totalPrice = 0;
 
-  constructor(private service: BasketService, private router: Router, private basketwrapper: BasketWrapperService) { }
+  constructor(
+    private service: BasketService,
+    private router: Router,
+    private basketwrapper: BasketWrapperService
+  ) {}
 
   ngOnInit(): void {
-    this.service.getBasket().subscribe(basket => {
+    this.service.getBasket().subscribe((basket) => {
       this.basket = basket;
       this.calculateTotalPrice();
-    })
+    });
   }
 
+  // tslint:disable-next-line: typedef
   itemQuantityChanged(item: IBasketItem) {
     this.calculateTotalPrice();
-    this.service.setBasket(this.basket).subscribe(x => console.log('basket update: ' + x));
+    this.service
+      .setBasket(this.basket)
+      .subscribe((x) => console.log('basket update: ' + x));
   }
 
   update(event: any): Observable<boolean> {
-    let setBasketObservable = this.service.setBasket(this.basket);
-    setBasketObservable.subscribe(x => {
-      this.errorMessages = [];
-      console.log('basket update: ' + x);
-    },
-      errMessage => this.errorMessages = errMessage);
+    const setBasketObservable = this.service.setBasket(this.basket);
+    setBasketObservable.subscribe(
+      (x) => {
+        this.errorMessages = [];
+        console.log('basket update: ' + x);
+      },
+      (errMessage) => (this.errorMessages = errMessage)
+    );
 
     return setBasketObservable;
   }
 
+  // tslint:disable-next-line: typedef
   checkOut(event: any) {
-    this.update(event).subscribe(x => {
+    this.update(event).subscribe((x) => {
       this.errorMessages = [];
       this.basketwrapper.basket = this.basket;
       this.router.navigate(['order']);
     });
   }
 
+  // tslint:disable-next-line: typedef
   private calculateTotalPrice() {
     this.totalPrice = 0;
-    this.basket.items.forEach(item => {
-      this.totalPrice += (item.quantity * item.unitPrice);
+    this.basket.items.forEach((item) => {
+      this.totalPrice += item.quantity * item.unitPrice;
     });
   }
 }

@@ -6,14 +6,22 @@ import { RouterModule } from '@angular/router';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { PagerComponent } from './components/pager/pager';
 import { Identity } from './components/identity/identity';
-import { Header } from './components/header/header';
-import { Pager } from './components/pager/pager';
+import { HeaderComponent } from './components/header/header';
+import { DataService } from './services/data.service';
+import { BasketWrapperService } from './services/basket.wrapper.service';
+import { SecurityService } from './services/security.service';
+import { ConfigurationService } from './services/configuration.service';
+import { StorageService } from './services/storage.service';
+import { SignalrService } from './services/signalr.service';
+import { ModuleWithProviders } from '@angular/compiler/src/core';
 
 @NgModule({
   declarations: [
-    Pager,
-    Header,
+    PagerComponent,
+    HeaderComponent,
     Identity,
     PageNotFoundComponent,
     UppercasePipe],
@@ -25,25 +33,35 @@ import { Pager } from './components/pager/pager';
     NgbModule,
     // No need to export as these modules don't expose any components/directive etc'
     HttpClientModule,
-    HttpClientJsonpModule
+    HttpClientJsonpModule,
   ],
-  exports:[
+  exports: [
     // Modules
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
     NgbModule,
-    // Providers, Components, directive, pipes
-    Pager,
-    Header,
+    PagerComponent,
+    HeaderComponent,
     Identity,
     PageNotFoundComponent,
-    UppercasePipe
-  ]
+    UppercasePipe,
+  ],
 })
 export class SharedModule {
-  static forRoot(): any[] | import("@angular/core").Type<any> | import("@angular/core").ModuleWithProviders<{}> {
-    throw new Error('Method not implemented.');
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: [
+        // Providers
+        DataService,
+        BasketWrapperService,
+        SecurityService,
+        ConfigurationService,
+        StorageService,
+        SignalrService,
+      ],
+    };
   }
 }

@@ -1,12 +1,19 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'esh-header',
+    selector: 'app-header',
     templateUrl: './header.html',
     styleUrls: ['./header.scss']
 })
 
-export class Header {
-    @Input()
-    url: string;
+export class HeaderComponent implements OnInit {
+
+  @Input()
+  url: string;
+
+    ngOnInit(): void {
+
+    }
+
+
 }

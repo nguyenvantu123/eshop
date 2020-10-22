@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "eshopfe"
+    }
+  },
+  "defaultProject": "eshopfe",
+  "cli": {
+    "analytics": "e31bc8a3-c3ee-4466-b26c-641fb4c8b751"
+  }
 }

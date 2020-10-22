@@ -17,7 +17,9 @@ import { OrdersModule } from './orders/orders.module';
     AppComponent
   ],
   imports: [
+    // BrowserAnimationsModule,
     BrowserModule,
+
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     SharedModule.forRoot(),

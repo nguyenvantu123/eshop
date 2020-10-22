@@ -1,13 +1,13 @@
 <div class="esh-basket">
-    <esh-header url="/catalog">Back to catalog</esh-header>
-    
+    <app-header url="/catalog">Back to catalog</app-header>
+
     <div class="container">
         <div *ngFor="let errorMessage of errorMessages">
             <div class="esh-basket-items-margin-left1 row">
                 <div class="alert alert-warning" role="alert">&nbsp;{{errorMessage}}</div>
             </div>
         </div>
- 
+
         <article class="esh-basket-titles row">
             <section class="esh-basket-title col-3">Product</section>
             <section class="esh-basket-title col-3 hidden-lg-down"></section>
