@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { PagerComponent } from './components/pager/pager';
 import { Identity } from './components/identity/identity';
 import { HeaderComponent } from './components/header/header';
@@ -23,8 +24,7 @@ import { ModuleWithProviders } from '@angular/compiler/src/core';
     HeaderComponent,
     Identity,
     PageNotFoundComponent,
-    UppercasePipe,
-  ],
+    UppercasePipe],
   imports: [
     CommonModule,
     FormsModule,

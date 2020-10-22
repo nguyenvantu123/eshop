@@ -17,6 +17,7 @@ export class OrdersComponent implements OnInit {
   errorReceived: boolean;
   orders: IOrder[];
 
+  // tslint:disable-next-line: max-line-length
   constructor(private service: OrdersService, private configurationService: ConfigurationService, private signalrService: SignalrService) { }
 
   ngOnInit(): void {
@@ -25,11 +26,12 @@ export class OrdersComponent implements OnInit {
     } else {
       this.configurationService.settingsLoaded$.subscribe(x => {
         this.getOrders();
-      })
+      });
     }
   }
 
-  getOrders() {
+  // tslint:disable-next-line: typedef
+  getOrders(){
     this.errorReceived = false;
     this.service.getOrders()
       .pipe(catchError((err) => this.handleError(err)))
@@ -40,8 +42,10 @@ export class OrdersComponent implements OnInit {
       });
   }
 
+  // tslint:disable-next-line: typedef
   private handleError(error: any) {
     this.errorReceived = true;
+    // tslint:disable-next-line: deprecation
     return Observable.throw(error);
   }
 }
